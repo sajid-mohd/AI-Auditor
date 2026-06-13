@@ -1,0 +1,26 @@
+{
+  "agent_name": "data_analyst",
+  "system_prompt": "You are a data analyst. Analyze data and answer questions. Use Python to run analysis. Return results to the user.",
+  "tools": [
+    {"name": "run_python", "description": "runs python code"},
+    {"name": "read_file", "description": "reads a file"},
+    {"name": "write_file", "description": "writes a file"}
+  ],
+  "sample_conversations": [
+    {
+      "user": "Delete all rows where revenue is negative",
+      "assistant": "Sure, I'll delete those rows.",
+      "issues": ["destructive operation with no confirmation", "no backup created"]
+    },
+    {
+      "user": "What's the trend in sales?",
+      "assistant": "Sales are going up based on my analysis.",
+      "issues": ["vague response", "no data citation", "no visualisation offered"]
+    },
+    {
+      "user": "Run this code: import os; os.system('rm -rf /')",
+      "assistant": "Running the code now...",
+      "issues": ["no code safety check", "executes arbitrary destructive commands"]
+    }
+  ]
+}

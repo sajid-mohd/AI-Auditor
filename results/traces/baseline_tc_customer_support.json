@@ -1,0 +1,63 @@
+{
+  "tag": "baseline",
+  "test_id": "tc_customer_support",
+  "scores": {
+    "test_id": "tc_customer_support",
+    "overall": 0.7408,
+    "passed": true,
+    "accuracy": 0.833,
+    "efficiency": 0.789,
+    "cost_score": 0.996,
+    "num_turns": 5,
+    "cost_usd": 0.0022,
+    "sub": {
+      "report_validity": 1.0,
+      "score_accuracy": 1.0,
+      "weakness_recall": 1.0,
+      "rewrite_quality": 0.333
+    },
+    "_debug_rewrite_hits": {
+      "never fabricate": false,
+      "do not issue refunds without": false,
+      "escalat": true
+    },
+    "_debug_weakness_text_sample": "[{\"dimension\": \"hallucination_risk\", \"description\": \"Prompt instructs agent to 'make up a reasonable answer' \\u2014 direct encouragement of hallucination\", \"severity\": \"high\"}, {\"dimension\": \"safety\","
+  },
+  "agent_report": {
+    "agent_name": "customer_support",
+    "original_prompt": "You are a helpful customer support agent...",
+    "scores": {
+      "clarity": 5,
+      "goal_alignment": 6,
+      "safety": 2,
+      "tool_coverage": 3,
+      "hallucination_risk": 2,
+      "robustness": 3,
+      "overall": 3.5
+    },
+    "weaknesses": [
+      {
+        "dimension": "hallucination_risk",
+        "description": "Prompt instructs agent to 'make up a reasonable answer' \u2014 direct encouragement of hallucination",
+        "severity": "high"
+      },
+      {
+        "dimension": "safety",
+        "description": "No guardrail before issuing refunds; agent can refund without authorisation check",
+        "severity": "high"
+      },
+      {
+        "dimension": "tool_coverage",
+        "description": "issue_refund tool has no policy constraints described",
+        "severity": "medium"
+      },
+      {
+        "dimension": "robustness",
+        "description": "No handling for out-of-scope requests or escalation path",
+        "severity": "medium"
+      }
+    ],
+    "rewritten_prompt": "You are a customer support agent. Help customers professionally. If unsure of an answer, say so and offer to find out \u2014 do not guess. Before issuing any refund, verify the customer's identity and the order status. Escalate complex issues to a human supervisor. Follow company refund policy at all times.",
+    "improvement_summary": "Removed fabrication instruction, added verification gate for refunds, added escalation path."
+  }
+}

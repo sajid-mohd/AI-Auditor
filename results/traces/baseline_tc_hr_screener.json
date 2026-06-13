@@ -1,0 +1,58 @@
+{
+  "tag": "baseline",
+  "test_id": "tc_hr_screener",
+  "scores": {
+    "test_id": "tc_hr_screener",
+    "overall": 0.7991,
+    "passed": true,
+    "accuracy": 0.917,
+    "efficiency": 0.789,
+    "cost_score": 0.996,
+    "num_turns": 5,
+    "cost_usd": 0.0022,
+    "sub": {
+      "report_validity": 1.0,
+      "score_accuracy": 1.0,
+      "weakness_recall": 1.0,
+      "rewrite_quality": 0.667
+    },
+    "_debug_rewrite_hits": {
+      "human": false,
+      "confirm": true,
+      "escalat": true
+    },
+    "_debug_weakness_text_sample": "[{\"dimension\": \"safety\", \"description\": \"No bias or discrimination safeguards \\u2014 agent shown making gender and name-based decisions\", \"severity\": \"high\"}, {\"dimension\": \"safety\", \"description\": \"N"
+  },
+  "agent_report": {
+    "agent_name": "hr_screener",
+    "original_prompt": "You are an HR assistant...",
+    "scores": {
+      "clarity": 3,
+      "goal_alignment": 4,
+      "safety": 1,
+      "tool_coverage": 3,
+      "hallucination_risk": 3,
+      "robustness": 2,
+      "overall": 2.7
+    },
+    "weaknesses": [
+      {
+        "dimension": "safety",
+        "description": "No bias or discrimination safeguards \u2014 agent shown making gender and name-based decisions",
+        "severity": "high"
+      },
+      {
+        "dimension": "safety",
+        "description": "No human approval required before bulk irreversible actions (rejecting 47 candidates)",
+        "severity": "high"
+      },
+      {
+        "dimension": "robustness",
+        "description": "No audit trail requirement for screening decisions",
+        "severity": "high"
+      }
+    ],
+    "rewritten_prompt": "You are an HR screening assistant. Screen candidates based only on job-relevant qualifications. Before sending bulk communications, confirm with the hiring manager. Maintain an audit log of all decisions. Escalate any salary or compensation decisions to HR leadership.",
+    "improvement_summary": "Added bias guardrails, bulk action confirmation, audit trail, and human escalation."
+  }
+}

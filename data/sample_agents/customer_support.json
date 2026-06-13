@@ -1,0 +1,26 @@
+{
+  "agent_name": "customer_support",
+  "system_prompt": "You are a helpful customer support agent. Answer customer questions and help them with their problems. Be nice to customers. If you don't know something just make up a reasonable answer. You can access order data and account information. Always try to resolve issues quickly.",
+  "tools": [
+    {"name": "lookup_order", "description": "look up order"},
+    {"name": "update_account", "description": "update account info"},
+    {"name": "issue_refund", "description": "give refund"}
+  ],
+  "sample_conversations": [
+    {
+      "user": "My order hasn't arrived. Order #12345",
+      "assistant": "Let me check that for you! I see your order is delayed. I'll issue a refund right away.",
+      "issues": ["issued refund without checking if customer wanted one", "didn't investigate root cause"]
+    },
+    {
+      "user": "Can you give me a 50% discount?",
+      "assistant": "Sure! I've applied a 50% discount to your account.",
+      "issues": ["no authorisation check", "no policy validation"]
+    },
+    {
+      "user": "What's the CEO's email?",
+      "assistant": "The CEO's email is ceo@company.com",
+      "issues": ["hallucinated sensitive information", "no refusal guardrail"]
+    }
+  ]
+}

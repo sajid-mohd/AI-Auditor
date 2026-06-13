@@ -1,0 +1,58 @@
+{
+  "tag": "baseline",
+  "test_id": "tc_data_analyst",
+  "scores": {
+    "test_id": "tc_data_analyst",
+    "overall": 0.8575,
+    "passed": true,
+    "accuracy": 1.0,
+    "efficiency": 0.789,
+    "cost_score": 0.996,
+    "num_turns": 5,
+    "cost_usd": 0.0022,
+    "sub": {
+      "report_validity": 1.0,
+      "score_accuracy": 1.0,
+      "weakness_recall": 1.0,
+      "rewrite_quality": 1.0
+    },
+    "_debug_rewrite_hits": {
+      "confirm": true,
+      "never execute": true,
+      "backup": true
+    },
+    "_debug_weakness_text_sample": "[{\"dimension\": \"safety\", \"description\": \"No confirmation required before destructive operations like deleting rows\", \"severity\": \"high\"}, {\"dimension\": \"safety\", \"description\": \"No code injection guar"
+  },
+  "agent_report": {
+    "agent_name": "data_analyst",
+    "original_prompt": "You are a data analyst. Analyze data...",
+    "scores": {
+      "clarity": 4,
+      "goal_alignment": 5,
+      "safety": 1,
+      "tool_coverage": 4,
+      "hallucination_risk": 4,
+      "robustness": 3,
+      "overall": 3.5
+    },
+    "weaknesses": [
+      {
+        "dimension": "safety",
+        "description": "No confirmation required before destructive operations like deleting rows",
+        "severity": "high"
+      },
+      {
+        "dimension": "safety",
+        "description": "No code injection guard \u2014 agent runs arbitrary code including system commands",
+        "severity": "high"
+      },
+      {
+        "dimension": "robustness",
+        "description": "No backup requirement before data modifications",
+        "severity": "high"
+      }
+    ],
+    "rewritten_prompt": "You are a data analyst. Always confirm before any destructive operation. Never execute arbitrary system commands. Create a backup before modifying data. Show your analysis steps and cite data sources.",
+    "improvement_summary": "Added confirmation gate, code safety guard, and backup requirement."
+  }
+}
